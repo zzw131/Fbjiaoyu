@@ -1,0 +1,6 @@
+{
+  "name": "粉笔练习首页 1:1 还原",
+  "description": "1:1 像素级还原练习首页界面",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
