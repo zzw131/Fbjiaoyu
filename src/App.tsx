@@ -1138,6 +1138,8 @@ export default function App() {
   const [bannerPage, setBannerPage] = useState(0);
   // 金刚区当前页索引（共 2 页，每页显示 4 个 3D 图标）
   const [kingkongPage, setKingkongPage] = useState(0);
+  // 底部导航当前选中项
+  const [activeBottomTab, setActiveBottomTab] = useState<'practice' | 'courses' | 'discover' | 'me'>('practice');
 
   const togglePrimary = (id: string) => {
     setExpandedPrimary((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -1843,76 +1845,42 @@ export default function App() {
         {/* 9. Bottom Tab Navigation + iOS Home Indicator */}
         <div className="bg-[#F7F8FB] pt-1.5 pb-2 select-none">
           <div className="grid grid-cols-4 items-center">
-            {/* Tab 1: 练习 (Active) */}
-            <button type="button" className="flex flex-col items-center justify-center">
-              <div className="w-[24px] h-[24px] flex items-center justify-center">
-                <svg width="20" height="21" viewBox="0 0 20 21" fill="none">
-                  <rect x="1" y="1" width="18" height="19" rx="2" fill="#3478F6" />
-                  <rect x="4.2" y="1" width="1.8" height="5.5" fill="white" />
-                  <rect x="4.5" y="14.5" width="9" height="1.8" rx="0.9" fill="white" />
-                </svg>
-              </div>
-              <span className="mt-1 text-[10.5px] text-[#444444]">练习</span>
-            </button>
-
-            {/* Tab 2: 课程 */}
-            <button type="button" className="flex flex-col items-center justify-center">
-              <div className="w-[24px] h-[24px] flex items-center justify-center">
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                  <path
-                    d="M11 2C6.03 2 2 5.8 2 10.5C2 12.6 2.81 14.52 4.15 16.01L3.3 19.2L6.72 18.08C8.01 18.67 9.46 19 11 19C15.97 19 20 15.2 20 10.5C20 5.8 15.97 2 11 2Z"
-                    stroke="#9EA5B5"
-                    strokeWidth="1.5"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M9.3 7.4L14.2 10.5L9.3 13.6V7.4Z"
-                    stroke="#9EA5B5"
-                    strokeWidth="1.4"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <span className="mt-1 text-[10.5px] text-[#666666]">课程</span>
-            </button>
-
-            {/* Tab 3: 发现 */}
-            <button type="button" className="flex flex-col items-center justify-center">
-              <div className="w-[24px] h-[24px] flex items-center justify-center">
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                  <circle cx="11" cy="11" r="9" stroke="#9EA5B5" strokeWidth="1.5" />
-                  <path
-                    d="M12.6 6.2L10.3 15.8L9.4 11.2L12.6 6.2Z"
-                    stroke="#9EA5B5"
-                    strokeWidth="1.3"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M11.6 6.2C13 9.2 13 12.8 10.3 15.8C9 12.8 9 9.2 11.6 6.2Z"
-                    stroke="#9EA5B5"
-                    strokeWidth="1.4"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <span className="mt-1 text-[10.5px] text-[#666666]">发现</span>
-            </button>
-
-            {/* Tab 4: 我 */}
-            <button type="button" className="flex flex-col items-center justify-center">
-              <div className="w-[24px] h-[24px] flex items-center justify-center">
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                  <circle cx="11" cy="11" r="9" stroke="#9EA5B5" strokeWidth="1.5" />
-                  <path
-                    d="M7.2 10.5C7.2 12.7 8.9 14.5 11 14.5C13.1 14.5 14.8 12.7 14.8 10.5"
-                    stroke="#9EA5B5"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </div>
-              <span className="mt-1 text-[10.5px] text-[#666666]">我</span>
-            </button>
+            {[
+              { id: 'practice' as const, label: '练习', iconSrc: '/assets/aistudio/___cde2cfa9.svg' },
+              { id: 'courses' as const, label: '课程', iconSrc: '/assets/aistudio/___762351c9.svg' },
+              { id: 'discover' as const, label: '发现', iconSrc: '/assets/aistudio/___5c1c5df0.svg' },
+              { id: 'me' as const, label: '我', iconSrc: '/assets/aistudio/__2e2fb0e8.svg' },
+            ].map((tab) => {
+              const isActive = activeBottomTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveBottomTab(tab.id)}
+                  className="flex flex-col items-center justify-center cursor-pointer"
+                >
+                  <div className="w-[24px] h-[24px] overflow-hidden relative">
+                    <img
+                      src={tab.iconSrc}
+                      alt={tab.label}
+                      draggable={false}
+                      className={`w-[132px] h-[72px] max-w-none block select-none pointer-events-none ${
+                        isActive
+                          ? '-translate-x-[84px] -translate-y-[24px]'
+                          : '-translate-x-[24px] -translate-y-[24px]'
+                      }`}
+                    />
+                  </div>
+                  <span
+                    className={`mt-1 text-[10.5px] ${
+                      isActive ? 'text-[#444444] font-medium' : 'text-[#666666]'
+                    }`}
+                  >
+                    {tab.label}
+                  </span>
+                </button>
+              );
+            })}
           </div>
 
           <div className="mt-3.5 flex justify-center">

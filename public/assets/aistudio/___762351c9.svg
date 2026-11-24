@@ -1,0 +1,7 @@
+<svg width="132" height="72" viewBox="0 0 132 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="132" height="72" rx="12" fill="#F7F8FB"/>
+<path d="M36 27.25C31.17 27.25 27.25 30.82 27.25 35.3C27.25 37.24 27.98 39.02 29.25 40.42L28.45 44.6L32.76 42.77C33.77 43.15 34.86 43.35 36 43.35C40.83 43.35 44.75 39.77 44.75 35.3C44.75 30.82 40.83 27.25 36 27.25Z" stroke="#9EA5B5" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M34 32.25C34 31.92 34.36 31.72 34.64 31.9L39.1 34.87C39.36 35.04 39.36 35.42 39.1 35.6L34.64 38.57C34.36 38.75 34 38.55 34 38.22V32.25Z" stroke="#9EA5B5" stroke-width="1.45" stroke-linejoin="round"/>
+<path d="M96 27.25C91.17 27.25 87.25 30.82 87.25 35.3C87.25 37.24 87.98 39.02 89.25 40.42L88.45 44.6L92.76 42.77C93.77 43.15 94.86 43.35 96 43.35C100.83 43.35 104.75 39.77 104.75 35.3C104.75 30.82 100.83 27.25 96 27.25Z" fill="#3478F6" stroke="#3478F6" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M94 32.25C94 31.92 94.36 31.72 94.64 31.9L99.1 34.87C99.36 35.04 99.36 35.42 99.1 35.6L94.64 38.57C94.36 38.75 94 38.55 94 38.22V32.25Z" fill="white" stroke="white" stroke-width="1.45" stroke-linejoin="round"/>
+</svg>
